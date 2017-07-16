@@ -1,0 +1,13 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "airbnb-base",
+    "rules": {
+        // "no-const-assign": "warn",
+        // "no-unused-vars": "warn"
+    }
+}
