@@ -9,11 +9,14 @@
   "author": "popzhou",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongoose": "^4.11.1"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
