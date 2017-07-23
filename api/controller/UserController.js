@@ -5,7 +5,7 @@ class UserController {
     // this.getAll = this.getAll.bind(this);
   }
 
-  async getAll(req, res, next) {
+  async getAll(req, res) {
     const allUsers = await UserModel.find();
 
     res.send({
@@ -14,7 +14,7 @@ class UserController {
     });
   }
 
-  async getByName(req, res, next) {
+  async getByName(req, res) {
     const user = await UserModel.findOne({
       name: 'zhoujl',
     });
@@ -23,6 +23,29 @@ class UserController {
       status: 1,
       data: user,
     });
+  }
+
+  async getUser(req, res) {
+    const {
+      userid,
+      username,
+    } = req.query;
+
+    const user = await UserModel.findOne({
+      id: 'zhoujl',
+    });
+
+    try {
+      res.send({
+        errcode: 0,
+        errmsg: 'ok',
+      });
+    } catch (error) {
+      res.send({
+        errcode: 0,
+        errmsg: user,
+      });
+    }
   }
 }
 

@@ -7,6 +7,8 @@ const UserSchema = new Schema({
   email: String,
 });
 
+// UserSchema.set('collection', 'user');
+
 const UserModel = mongoose.model('User', UserSchema);
 
 export default UserModel;
