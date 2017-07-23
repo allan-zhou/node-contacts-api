@@ -10,7 +10,5 @@ router.get('/:departmentid', Department.getDepartmentById);
 router.put('/:departmentid', Department.updateDepartmentById);
 router.delete('/:departmentid', Department.deleteDepartmentById);
 
-router.get('/batchdelete', Department.batchDeleteDepartments);
-
 
 export default router;

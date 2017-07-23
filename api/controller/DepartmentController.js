@@ -2,35 +2,31 @@ import DepartmentModel from '../model/DepartmentModel';
 import ERRCODE from '../../config/errcode';
 
 class DepartmentController {
-  constructor() {
-    // this.getAll = this.getAll.bind(this);
-  }
-
-  async getDepartmentById(req, res) {
-    const Department = await DepartmentModel.findOne({
-      id: 'zhoujl',
-    });
-
+  static async getDepartmentById(req, res) {
     try {
+      const data = await DepartmentModel.find({
+        id: req.params.departmentid,
+      });
       res.send({
         errcode: ERRCODE.success,
         errmsg: 'ok',
+        data,
       });
     } catch (error) {
       res.send({
         errcode: ERRCODE.failure,
-        errmsg: Department,
+        errmsg: error,
       });
     }
   }
 
-  async listDepartments(req, res) {
+  static async listDepartments(req, res) {
     try {
-      const Department = await DepartmentModel.find({});
+      const data = await DepartmentModel.find({});
       res.send({
         errcode: ERRCODE.success,
         errmsg: 'ok',
-        data: Department,
+        data,
       });
     } catch (error) {
       res.send({
@@ -40,27 +36,20 @@ class DepartmentController {
     }
   }
 
-  async createDepartment(req, res) {
-    const {
-      id,
-      name,
-      parentid,
-      order,
-    } = req.body;
-
+  static async createDepartment(req, res) {
     const newObj = {
-      id,
-      name,
-      parentid,
-      order,
+      id: req.body.id,
+      name: req.body.name,
+      parentid: req.body.parentid,
+      order: req.body.order,
     };
 
     try {
-      const Department = await DepartmentModel.create(newObj);
+      const data = await DepartmentModel.create(newObj);
       res.send({
         errcode: ERRCODE.success,
         errmsg: 'ok',
-        data: Department,
+        data,
       });
     } catch (error) {
       res.send({
@@ -70,11 +59,47 @@ class DepartmentController {
     }
   }
 
-  async updateDepartmentById(req, res) {}
+  static async updateDepartmentById(req, res) {
+    const newObj = {
+      name: req.body.name,
+      parentid: req.body.parentid,
+      order: req.body.order,
+    };
 
-  async deleteDepartmentById(req, res) {}
+    try {
+      const data = await DepartmentModel.update({
+        id: req.params.departmentid,
+      }, newObj);
+      res.send({
+        errcode: ERRCODE.success,
+        errmsg: 'ok',
+        data,
+      });
+    } catch (error) {
+      res.send({
+        errcode: ERRCODE.failure,
+        errmsg: error,
+      });
+    }
+  }
 
-  async batchDeleteDepartments(req, res) {}
+  static async deleteDepartmentById(req, res) {
+    try {
+      const data = await DepartmentModel.deleteOne({
+        id: req.params.departmentid,
+      });
+      res.send({
+        errcode: ERRCODE.success,
+        errmsg: 'ok',
+        data,
+      });
+    } catch (error) {
+      res.send({
+        errcode: ERRCODE.failure,
+        errmsg: error,
+      });
+    }
+  }
 }
 
-export default new DepartmentController();
+export default DepartmentController;

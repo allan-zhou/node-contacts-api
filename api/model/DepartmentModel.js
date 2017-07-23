@@ -7,7 +7,10 @@ const departmentSchema = new Schema({
     type: Number,
     unique: true,
   },
-  name: String,
+  name: {
+    type: String,
+    required: true,
+  },
   parentid: Number,
   order: Number,
 });
