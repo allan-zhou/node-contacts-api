@@ -21,6 +21,7 @@ class DepartmentController {
   }
 
   static async listDepartments(req, res) {
+    console.log('req');
     try {
       const data = await DepartmentModel.find({});
       res.send({
