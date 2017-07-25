@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -8,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'), // 打包后的文件存放的地方
-    filename: '[name].js', // 打包后输出文件的文件名
+    filename: 'contacts-api.js', // 打包后输出文件的文件名
   },
   target: 'node',
   externals: [nodeExternals()],
@@ -21,5 +22,8 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
+    new webpack.DefinePlugin({
+      // 'process.env.PORT': 80,
+    }),
   ],
 };

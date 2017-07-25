@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "webpack && node dist/server.js"
+    "server": "webpack && node dist/contacts-api.js"
   },
   "author": "popzhou",
   "license": "ISC",
